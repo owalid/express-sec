@@ -1,6 +1,7 @@
-const express = require('express')
-const app = express()
-
+const express = require('express');
+const app = express();
+const PORT = 9999;
+      
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -14,5 +15,4 @@ app.post('/exploit', (req, res) => {
 	return res.statusCode(200);
 })
 
-app.listen(9999, () => {console.log("Express sec listen on 9999 port")})
-
+app.listen(PORT, () => { console.log(`Express sec listen on ${PORT} port`) });
