@@ -1,0 +1,23 @@
+{
+  "name": "express-sec",
+  "version": "1.0.0",
+  "description": "Express for security",
+  "main": "index.js",
+  "scripts": {
+	  "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owalid/express-sec.git"
+  },
+  "author": "0w4lid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owalid/express-sec/issues"
+  },
+  "homepage": "https://github.com/owalid/express-sec#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
