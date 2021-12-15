@@ -4,6 +4,14 @@ const PORT = 9999;
       
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }))
+app.use((req, res, next) => {
+	console.log(res.statusCode, req.method, req.url);
+	if (req.method == "POST") {
+		console.log("[BODY]", req.body);
+	}
+	next();
+})
 
 app.get('/exploit/:flag', (req, res) => {
 	console.log("[FLAG]", req.params.flag);
@@ -11,7 +19,6 @@ app.get('/exploit/:flag', (req, res) => {
 })
 
 app.post('/exploit', (req, res) => {
-	console.log("[BODY]", req.body);
 	return res.status(200);
 })
 
