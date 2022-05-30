@@ -1,20 +1,24 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const app = express();
-const PORT = 9999;
+const PORT = process.env.PORT || 9999;
       
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }))
 app.use((req, res, next) => {
-	console.log(res.statusCode, req.method, req.url);
+	console.log("[METHOD]: req.method");
+	console.log("[URL]: req.url");
 	if (req.method == "POST") {
 		console.log("[BODY]", req.body);
-	}
+	} else {
+		console.log("[PARAMS]", req.params);
+        }
 	next();
 })
 
 app.get('/exploit/:flag', (req, res) => {
-	console.log("[FLAG]", req.params.flag);
 	return res.status(200);
 })
 
