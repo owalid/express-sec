@@ -15,18 +15,19 @@ const decodeParamsBase64 = (params, key) => {
 app.use(express.json({limit: '50mb'}));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }))
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
 	console.log(`[METHOD]: ${req.method}`);
+	console.log("[HEADERS]:", req.headers);
 	console.log(`[URL]: ${req.url}`);
 	next();
 })
 
 app.get('/exploit/:flag', (req, res) => {
   console.log("[RAW PARAMS]:", req.params);
-  for (let key in req.params) {
+  for (const key in req.params) {
     decodeParamsBase64(req.params[key], key);
   }
-  for (let key in req.query) {
+  for (const key in req.query) {
     decodeParamsBase64(req.query[key], key);
   }
 	return res.status(200);
@@ -34,7 +35,7 @@ app.get('/exploit/:flag', (req, res) => {
 
 app.post('/exploit', (req, res) => {
   console.log(req.body)
-  for (let key in req.body) {
+  for (const key in req.body) {
     decodeParamsBase64(req.body[key], key);
   }
 	return res.status(200);
