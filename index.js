@@ -30,7 +30,7 @@ app.get('/exploit/:flag', (req, res) => {
   for (const key in req.query) {
     decodeParamsBase64(req.query[key], key);
   }
-	return res.status(200);
+	return res.json({}).status(200);
 })
 
 app.post('/exploit', (req, res) => {
@@ -38,7 +38,7 @@ app.post('/exploit', (req, res) => {
   for (const key in req.body) {
     decodeParamsBase64(req.body[key], key);
   }
-	return res.status(200);
+	return res.json({}).status(200);
 })
 
 app.listen(PORT, () => { console.log(`Express sec listen on ${PORT} port`) });
