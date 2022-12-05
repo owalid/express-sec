@@ -24,6 +24,9 @@ const decodeJWT = (params, key) => {
 }
 
 const decodeRouter = (params, key) => {
+  if (params.includes('session=')) {
+    params = params.split('session=')[1]
+  }
   if (params.match(/^[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*$/)) {
     decodeJWT(params, key)
   } else if (params.match(/^@[a-zA-Z0-9+/]+={,2}$/)) {
