@@ -1,4 +1,4 @@
-# express-sec
+# Express-sec
 
 ```
 npm i
