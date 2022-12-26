@@ -29,10 +29,9 @@ const decodeRouter = (params, key) => {
   }
   if (params.match(/^[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*$/)) {
     decodeJWT(params, key)
-  } else if (params.match(/^@[a-zA-Z0-9+/]+={,2}$/)) {
-    decodeParamsBase64(params, key);
-  }
-
+    return;
+  } 
+  decodeParamsBase64(params, key);
 }
 
 const color = {
