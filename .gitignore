@@ -1,5 +1,7 @@
-# Logs
+.DS_Store
 uploads/*
+
+# Logs
 !uploads/.gitkeep
 logs
 *.log
