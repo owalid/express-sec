@@ -1,4 +1,8 @@
+.DS_Store
+uploads/*
+
 # Logs
+!uploads/.gitkeep
 logs
 *.log
 npm-debug.log*
