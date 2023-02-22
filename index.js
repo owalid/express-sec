@@ -76,7 +76,7 @@ app.post('/upload', fileUpload(), (req, res) => {
   return res.json({}).status(200);
 })
 
-app.get('/exploit/:flag', (req, res) => {
+app.get('/:flag', (req, res) => {
   console.log(`${color.red}[RAW PARAMS]${color.default}:`, req.params);
   console.log(`${color.red}[QUERY]${color.default}:`, req.query);
   for (const key in req.params) {
@@ -88,19 +88,7 @@ app.get('/exploit/:flag', (req, res) => {
 	return res.json({}).status(200);
 })
 
-app.get('/?param=:flag', (req, res) => {
-  console.log(`${color.red}[RAW PARAMS]${color.default}:`, req.params);
-  console.log(`${color.red}[QUERY]${color.default}:`, req.query);
-  for (const key in req.params) {
-    decodeRouter(req.params[key], key);
-  }
-  for (const key in req.query) {
-    decodeRouter(req.query[key], key);
-  }
-	return res.json({}).status(200);
-})
-
-app.post('/exploit', (req, res) => {
+app.post('/', (req, res) => {
   console.log(`${color.red}[BODY]${color.default}:`, req.params);
   for (const key in req.body) {
     decodeRouter(req.body[key], key);
